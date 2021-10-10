@@ -3,10 +3,6 @@ variable "name" {}
 variable "owner" {}
 variable "region" {}
 
-variable "module_src" {
-  default = "github.com/terraform-aws-modules/terraform-aws-vpc"
-}
-
 variable "vpc_cidr" {}
 variable "azs" {}
 variable "private_subnets" {}
