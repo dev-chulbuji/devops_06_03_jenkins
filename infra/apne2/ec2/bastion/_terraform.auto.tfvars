@@ -18,7 +18,7 @@ key_name = "dev"
 
 # sg
 sg_description = "Security group for Bastion EC2 instance"
-ingress_cidr_blocks = [""]
-ingress_rules = ["ssh-tcp"]
+ingress_cidr_blocks = ["211.106.116.65/32"]
+ingress_rules = ["ssh-tcp", "http-8080-tcp"]
 egress_rules = ["all-all"]
 
