@@ -4,7 +4,7 @@ DOCKER_GID := $(getent group docker | awk -F: '{printf "%d",$3}')
 SERVICE := 'jenkins'
 
 run:
-	export TAG=$(TAG); docker-compose up -d;
+	export TAG=$(TAG); export DOCKER_GID=$(DOCKER_GID); docker-compose up -d;
 
 log:
 	docker logs -f $(SERVICE) 
