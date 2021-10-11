@@ -2,7 +2,7 @@ version: '3.8'
 services:
   jenkins:
     build:
-      context: ..
+      context: ""
       args:
         DOCKER_GID: ${DOCKER_GID}
     container_name: jenkins
