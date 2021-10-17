@@ -22,13 +22,14 @@ locals {
   http_egress_rules        = var.http_egress_rules
 
   # alb
-  http_tcp_listeners = var.http_tcp_listeners
+  http_tcp_listeners      = var.http_tcp_listeners
+  http_tcp_listener_rules = var.http_tcp_listener_rules
   target_groups = [
     {
       name_prefix      = local.target_group_name
       backend_protocol = var.backend_protocol
       backend_port     = var.backend_port
-      target_type      = "instance"
+      target_type      = var.target_type
 
       targets = {
         jenkins = {

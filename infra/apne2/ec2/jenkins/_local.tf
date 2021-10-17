@@ -20,11 +20,6 @@ locals {
   instance_type = var.instance_type
   key_name      = var.key_name
 
-  ssh_sg_description      = var.ssh_sg_description
-  ssh_ingress_cidr_blocks = var.ssh_ingress_cidr_blocks
-  ssh_ingress_rules       = var.ssh_ingress_rules
-  ssh_egress_rules        = var.ssh_egress_rules
-
   http_sg_description      = var.http_sg_description
   http_ingress_cidr_blocks = var.http_ingress_cidr_blocks
   http_ingress_rules       = var.http_ingress_rules

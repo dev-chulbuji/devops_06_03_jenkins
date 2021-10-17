@@ -12,6 +12,7 @@ variable "http_egress_rules" {}
 
 # alb
 variable "http_tcp_listeners" {}
+variable "http_tcp_listener_rules" {}
 variable "target_type" {}
 variable "backend_protocol" {}
 variable "backend_port" {}

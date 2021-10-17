@@ -4,9 +4,11 @@ DOCKER_GID := $(shell getent group docker | awk -F: '{printf "%d",$$3}')
 SERVICE := 'jenkins'
 
 pre-run:
+	echo "pre-run"
 post-run:
+	echo "post-run"
 compose-run:
-	export TAG=$(TAG); export DOCKER_GID=$(DOCKER_GID); docker-compose up --build -d;
+	export DOCKER_GID=$(DOCKER_GID); docker-compose up --build -d;
 run: pre-run compose-run post-run
 
 pre-destroy:
