@@ -15,3 +15,8 @@ sudo systemctl daemon-reload;
 sudo systemctl start jenkins;
 
 sudo systemctl status jenkins;
+
+sudo yum install -y docker;
+sudo systemctl enable docker;
+sudo systemctl start docker;
+sudo usermod -aG docker jenkins;
