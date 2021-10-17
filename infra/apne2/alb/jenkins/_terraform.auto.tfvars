@@ -32,7 +32,7 @@ http_tcp_listener_rules = [
       target_group_index = 0
     }]
     conditions = [{
-      path_patterns = ["/"]
+      path_patterns = ["/*"]
     }]
   }
 ]

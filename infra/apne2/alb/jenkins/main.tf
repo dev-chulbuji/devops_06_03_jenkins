@@ -23,7 +23,7 @@ module "alb" {
   load_balancer_type = "application"
 
   vpc_id                  = local.vpc_id
-  security_groups         = [module.http.security_group_id]
+  security_groups         = [module.http.security_group_id, local.default_sg_id]
   subnets                 = local.public_subnet_ids
   http_tcp_listeners      = local.http_tcp_listeners
   http_tcp_listener_rules = local.http_tcp_listener_rules
