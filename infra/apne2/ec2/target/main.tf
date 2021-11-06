@@ -6,20 +6,20 @@ module "ec2" {
   ami                         = local.ami_id
   key_name                    = local.key_name
   instance_type               = local.instance_type
-  availability_zone           = element(local.azs, 0)
-  subnet_id                   = element(local.private_subnet_ids, 0)
-  vpc_security_group_ids      = [module.http.security_group_id, local.default_sg_id]
+  availability_zone           = element(local.azs, 1)
+  subnet_id                   = element(local.private_subnet_ids, 1)
+  vpc_security_group_ids      = [module.sg.security_group_id, local.default_sg_id]
   iam_instance_profile        = module.iam.iam_instance_profile_name
   associate_public_ip_address = false
 
   user_data  = data.template_file.userdata.rendered
   private_ip = var.private_ip
 
-  tags = local.tags
+  tags = merge(local.tags, { Name = local.ec2_name })
 }
 
 # http sg
-module "http" {
+module "sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "~> 4.0"
 
@@ -44,6 +44,6 @@ module "iam" {
   role_name               = local.role_name
   role_requires_mfa       = false
 
-  trusted_role_services = local.trusted_role_services
+  trusted_role_services   = var.trusted_role_services
   custom_role_policy_arns = local.custom_role_policy_arns
 }

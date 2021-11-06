@@ -1,37 +1,19 @@
 module "ec2" {
+  count  = length(local.slave_names)
   source = "terraform-aws-modules/ec2-instance/aws"
 
-  name = local.ec2_name
+  name = local.slave_names[count.index]
 
   ami                         = local.ami_id
   key_name                    = local.key_name
   instance_type               = local.instance_type
   availability_zone           = element(local.azs, 0)
   subnet_id                   = element(local.private_subnet_ids, 0)
-  vpc_security_group_ids      = [module.http.security_group_id, local.default_sg_id]
+  vpc_security_group_ids      = [local.default_sg_id]
   iam_instance_profile        = module.iam.iam_instance_profile_name
   associate_public_ip_address = false
 
-  user_data  = data.template_file.userdata.rendered
-  private_ip = var.private_ip
-
-  tags = local.tags
-}
-
-# http sg
-module "http" {
-  source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 4.0"
-
-  name        = local.http_sg_name
-  description = local.http_sg_description
-  vpc_id      = local.vpc_id
-
-  ingress_cidr_blocks = local.http_ingress_cidr_blocks
-  ingress_rules       = local.http_ingress_rules
-  egress_rules        = local.http_egress_rules
-
-  tags = local.tags
+  tags = merge(local.tags, { Name = local.slave_names[count.index] })
 }
 
 # iam

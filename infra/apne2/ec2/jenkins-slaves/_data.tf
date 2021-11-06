@@ -10,7 +10,3 @@ data "aws_ami" "this" {
     }
   }
 }
-
-data "template_file" "userdata" {
-  template = file("templates/userdata.sh")
-}
