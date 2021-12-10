@@ -6,6 +6,8 @@ locals {
   ssh_sg_name  = format("%s-ssh-sg", var.name)
   http_sg_name = format("%s-http-sg", var.name)
 
+  target_names = [for cnt in range(0, var.target_count) : format("%s-%s-ec2", var.name, cnt)]
+
   tags = merge(var.tags, { Owner = var.owner, Environment = var.env })
 
   vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id

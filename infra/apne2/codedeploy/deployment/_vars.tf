@@ -9,3 +9,4 @@ variable "custom_role_policy_arns" {}
 # codedeploy
 variable "compute_platform" {}
 variable "ec2_tag_filter" {}
+variable "codedeploy_app_key" {}

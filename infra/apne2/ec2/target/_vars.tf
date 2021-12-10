@@ -6,7 +6,8 @@ variable "ami_owners" {}
 variable "ami_filters" {}
 variable "instance_type" {}
 variable "key_name" {}
-variable "private_ip" {}
+variable "target_count" {}
+variable "private_ips" {}
 
 variable "http_sg_description" {}
 variable "http_ingress_cidr_blocks" {}

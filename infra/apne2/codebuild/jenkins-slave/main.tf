@@ -85,7 +85,7 @@ resource "aws_codebuild_project" "this" {
     override_artifact_name = true
     packaging = "ZIP"
     location = local.bucket_artifact_name
-    namespace_type = "NONE"
+    namespace_type = "BUILD_ID"
   }
 
   tags = merge(local.tags, { Name = local.codebuild_name })

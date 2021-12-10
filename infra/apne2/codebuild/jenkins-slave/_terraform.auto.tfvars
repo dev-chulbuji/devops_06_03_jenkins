@@ -8,8 +8,8 @@ trusted_role_services = ["codebuild.amazonaws.com"]
 custom_role_policy_arns = [
   "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess",
   "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess",
+  "arn:aws:iam::aws:policy/AmazonVPCFullAccess",
   "arn:aws:iam::aws:policy/AmazonS3FullAccess",
-  "arn:aws:iam::aws:policy/AmazonVPCFullAccess"
 ]
 
 # codebuild

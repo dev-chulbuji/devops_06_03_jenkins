@@ -7,8 +7,8 @@ module "ec2" {
   ami                         = local.ami_id
   key_name                    = local.key_name
   instance_type               = local.instance_type
-  availability_zone           = element(local.azs, 0)
-  subnet_id                   = element(local.private_subnet_ids, 0)
+  availability_zone           = element(local.azs, count.index % 2)
+  subnet_id                   = element(local.private_subnet_ids, count.index % 2)
   vpc_security_group_ids      = [local.default_sg_id]
   iam_instance_profile        = module.iam.iam_instance_profile_name
   associate_public_ip_address = false

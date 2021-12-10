@@ -1,8 +1,8 @@
 resource "aws_codedeploy_deployment_group" "this" {
-  app_name              = aws_codedeploy_app.this.name
+  app_name              = local.app_name
   deployment_group_name = local.deployment_group_name
   service_role_arn      = module.iam.iam_role_arn
-#  deployment_config_name = aws_codedeploy_deployment_config.this.id
+  deployment_config_name = aws_codedeploy_deployment_config.this.id
 
   ec2_tag_set {
     dynamic "ec2_tag_filter" {
